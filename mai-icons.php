@@ -3,7 +3,7 @@
 /**
  * Plugin Name:     Mai Icons
  * Plugin URI:      https://bizbudding.com/mai-theme/
- * Description:     Custom Mai Icon block loaded with SVG options and styles.
+ * Description:     The required plugin for icons in Mai child themes.
  * Version:         2.0.0
  *
  * Author:          BizBudding
@@ -98,11 +98,6 @@ final class Mai_Icons_Plugin {
 			define( 'MAI_ICONS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 		}
 
-		// Plugin Includes Path.
-		if ( ! defined( 'MAI_ICONS_INCLUDES_DIR' ) ) {
-			define( 'MAI_ICONS_INCLUDES_DIR', STARTER_PLUGIN_PLUGIN_DIR . 'includes/' );
-		}
-
 		// Plugin Folder URL.
 		if ( ! defined( 'MAI_ICONS_PLUGIN_URL' ) ) {
 			define( 'MAI_ICONS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -127,10 +122,7 @@ final class Mai_Icons_Plugin {
 	 * @return  void
 	 */
 	private function includes() {
-		// Include vendor libraries.
 		require_once __DIR__ . '/vendor/autoload.php';
-		// Includes.
-		// foreach ( glob( STARTER_PLUGIN_INCLUDES_DIR . '*.php' ) as $file ) { include $file; }
 	}
 
 	/**
@@ -141,6 +133,7 @@ final class Mai_Icons_Plugin {
 	 */
 	public function hooks() {
 		add_action( 'admin_init', [ $this, 'updater' ] );
+		add_filter( 'plugin_action_links_mai-icons/mai-icons.php', [ $this, 'plugin_dependency_text' ], 100 );
 	}
 
 	/**
@@ -182,6 +175,24 @@ final class Mai_Icons_Plugin {
 				}
 			);
 		}
+	}
+
+	/**
+	 * Changes plugin dependency text.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param array $actions Plugin action links.
+	 *
+	 * @return array
+	 */
+	function plugin_dependency_text( $actions ) {
+		$actions['required-plugin'] = sprintf(
+			'<span class="network_active">%s</span>',
+			__( 'Mai Theme Dependency', 'mai-engine' )
+		);
+
+		return $actions;
 	}
 }
 
