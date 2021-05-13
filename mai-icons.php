@@ -4,7 +4,7 @@
  * Plugin Name:     Mai Icons
  * Plugin URI:      https://bizbudding.com/mai-theme/
  * Description:     Custom Mai Icon block loaded with SVG options and styles.
- * Version:         0.1.0
+ * Version:         2.0.0
  *
  * Author:          BizBudding
  * Author URI:      https://bizbudding.com
@@ -16,13 +16,13 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * Main Mai_Icons_Plugin Class.
  *
- * @since 0.1.0
+ * @since 2.0.0
  */
 final class Mai_Icons_Plugin {
 
 	/**
 	 * @var   Mai_Icons_Plugin The one true Mai_Icons_Plugin
-	 * @since 0.1.0
+	 * @since 2.0.0
 	 */
 	private static $instance;
 
@@ -32,7 +32,7 @@ final class Mai_Icons_Plugin {
 	 * Insures that only one instance of Mai_Icons_Plugin exists in memory at any one
 	 * time. Also prevents needing to define globals all over the place.
 	 *
-	 * @since   0.1.0
+	 * @since   2.0.0
 	 * @static  var array $instance
 	 * @uses    Mai_Icons_Plugin::setup_constants() Setup the constants needed.
 	 * @uses    Mai_Icons_Plugin::includes() Include the required files.
@@ -58,7 +58,7 @@ final class Mai_Icons_Plugin {
 	 * The whole idea of the singleton design pattern is that there is a single
 	 * object therefore, we don't want the object to be cloned.
 	 *
-	 * @since   0.1.0
+	 * @since   2.0.0
 	 * @access  protected
 	 * @return  void
 	 */
@@ -70,7 +70,7 @@ final class Mai_Icons_Plugin {
 	/**
 	 * Disable unserializing of the class.
 	 *
-	 * @since   0.1.0
+	 * @since   2.0.0
 	 * @access  protected
 	 * @return  void
 	 */
@@ -83,14 +83,14 @@ final class Mai_Icons_Plugin {
 	 * Setup plugin constants.
 	 *
 	 * @access  private
-	 * @since   0.1.0
+	 * @since   2.0.0
 	 * @return  void
 	 */
 	private function setup_constants() {
 
 		// Plugin version.
 		if ( ! defined( 'MAI_ICONS_VERSION' ) ) {
-			define( 'MAI_ICONS_VERSION', '0.1.0' );
+			define( 'MAI_ICONS_VERSION', '2.0.0' );
 		}
 
 		// Plugin Folder Path.
@@ -123,27 +123,24 @@ final class Mai_Icons_Plugin {
 	 * Include required files.
 	 *
 	 * @access  private
-	 * @since   0.1.0
+	 * @since   2.0.0
 	 * @return  void
 	 */
 	private function includes() {
 		// Include vendor libraries.
 		require_once __DIR__ . '/vendor/autoload.php';
 		// Includes.
-		foreach ( glob( STARTER_PLUGIN_INCLUDES_DIR . '*.php' ) as $file ) { include $file; }
+		// foreach ( glob( STARTER_PLUGIN_INCLUDES_DIR . '*.php' ) as $file ) { include $file; }
 	}
 
 	/**
 	 * Run the hooks.
 	 *
-	 * @since   0.1.0
+	 * @since   2.0.0
 	 * @return  void
 	 */
 	public function hooks() {
 		add_action( 'admin_init', [ $this, 'updater' ] );
-
-		register_activation_hook( __FILE__, [ $this, 'activate' ] );
-		register_deactivation_hook( __FILE__, 'flush_rewrite_rules' );
 	}
 
 	/**
@@ -151,7 +148,7 @@ final class Mai_Icons_Plugin {
 	 *
 	 * composer require yahnis-elsts/plugin-update-checker
 	 *
-	 * @since 0.1.0
+	 * @since 2.0.0
 	 *
 	 * @uses https://github.com/YahnisElsts/plugin-update-checker/
 	 *
@@ -186,13 +183,6 @@ final class Mai_Icons_Plugin {
 			);
 		}
 	}
-
-	/**
-	 * Plugin activation.
-	 *
-	 * @return  void
-	 */
-	public function activate() {}
 }
 
 /**
@@ -206,7 +196,7 @@ final class Mai_Icons_Plugin {
  *
  * Example: <?php $plugin = Mai_Icons_Plugin(); ?>
  *
- * @since 0.1.0
+ * @since 2.0.0
  *
  * @return object|Mai_Icons_Plugin The one true Mai_Icons_Plugin Instance.
  */
