@@ -217,3 +217,45 @@ function mai_icons() {
 
 // Get Mai_Icons_Plugin Running.
 mai_icons();
+
+/**
+ * Gets icons directory path.
+ *
+ * @since 2.0.0
+ *
+ * @uses Mai Icons plugin.
+ *
+ * @return string
+ */
+function mai_icons_get_dir() {
+	static $dir = null;
+
+	if ( ! is_null( $dir ) ) {
+		return $dir;
+	}
+
+	$dir = MAI_ICONS_PLUGIN_DIR . 'icons';
+
+	return $dir;
+}
+
+/**
+ * Gets icons directory url.
+ *
+ * @since 2.0.0
+ *
+ * @uses Mai Icons plugin.
+ *
+ * @return string
+ */
+function mai_icons_get_url() {
+	static $url = null;
+
+	if ( ! is_null( $url ) ) {
+		return $url;
+	}
+
+	$url = MAI_ICONS_PLUGIN_URL . 'icons';
+
+	return $url;
+}
