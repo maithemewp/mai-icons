@@ -1,2 +1,2 @@
-# Starter Plugin
-Starter plugin for BizBudding, Inc
+# Mai Icons
+Mai Icons plugin for Mai Theme.

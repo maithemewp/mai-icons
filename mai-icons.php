@@ -4,7 +4,7 @@
  * Plugin Name:     Mai Icons
  * Plugin URI:      https://bizbudding.com/mai-theme/
  * Description:     The required plugin for icons in Mai child themes.
- * Version:         2.0.0
+ * Version:         2.1.0
  *
  * Author:          BizBudding
  * Author URI:      https://bizbudding.com
@@ -12,6 +12,9 @@
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) exit;
+
+// Must be at the top of the file.
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 /**
  * Main Mai_Icons_Plugin Class.
@@ -87,10 +90,9 @@ final class Mai_Icons_Plugin {
 	 * @return  void
 	 */
 	private function setup_constants() {
-
 		// Plugin version.
 		if ( ! defined( 'MAI_ICONS_VERSION' ) ) {
-			define( 'MAI_ICONS_VERSION', '2.0.0' );
+			define( 'MAI_ICONS_VERSION', '2.1.0' );
 		}
 
 		// Plugin Folder Path.
@@ -132,7 +134,7 @@ final class Mai_Icons_Plugin {
 	 * @return  void
 	 */
 	public function hooks() {
-		add_action( 'admin_init', [ $this, 'updater' ] );
+		add_action( 'plugins_loaded',                              [ $this, 'updater' ], 12 );
 		add_filter( 'plugin_action_links_mai-icons/mai-icons.php', [ $this, 'plugin_dependency_text' ], 100 );
 	}
 
@@ -148,18 +150,12 @@ final class Mai_Icons_Plugin {
 	 * @return void
 	 */
 	public function updater() {
-		// Bail if current user cannot manage plugins.
-		if ( ! current_user_can( 'install_plugins' ) ) {
-			return;
-		}
-
 		// Bail if plugin updater is not loaded.
-		if ( ! class_exists( 'Puc_v4_Factory' ) ) {
+		if ( ! class_exists( 'YahnisElsts\PluginUpdateChecker\v5\PucFactory' ) ) {
 			return;
 		}
 
-		// Setup the updater.
-		$updater = Puc_v4_Factory::buildUpdateChecker( 'https://github.com/maithemewp/mai-icons/', __FILE__, 'mai-icons' );
+		PucFactory::buildUpdateChecker( 'https://github.com/maithemewp/mai-icons/', __FILE__, 'mai-icons' );
 
 		// Maybe set github api token.
 		if ( defined( 'MAI_GITHUB_API_TOKEN' ) ) {
