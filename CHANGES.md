@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.1.2 (11/27/23)
+* Changed: Update updater.
+
 ## 2.1.1 (6/20/23)
 * Fixed: Updater object not set.
 
