@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.2.0 (1/18/24)
+* Added: Twitter X icons are now available. The naming convention is `twitter-x` and `twitter-x-square` when used via `[mai_icon]` shortcode.
+
 ## 2.1.2 (11/27/23)
 * Changed: Update updater.
 
