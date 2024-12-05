@@ -4,7 +4,7 @@
  * Plugin Name:     Mai Icons
  * Plugin URI:      https://bizbudding.com/mai-theme/
  * Description:     The required plugin for icons in Mai child themes.
- * Version:         2.2.0
+ * Version:         2.2.1
  *
  * Author:          BizBudding
  * Author URI:      https://bizbudding.com
@@ -92,7 +92,7 @@ final class Mai_Icons_Plugin {
 	private function setup_constants() {
 		// Plugin version.
 		if ( ! defined( 'MAI_ICONS_VERSION' ) ) {
-			define( 'MAI_ICONS_VERSION', '2.2.0' );
+			define( 'MAI_ICONS_VERSION', '2.2.1' );
 		}
 
 		// Plugin Folder Path.
