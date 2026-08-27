@@ -5,6 +5,7 @@
  * Plugin URI:      https://bizbudding.com/mai-theme/
  * Description:     The required plugin for icons in Mai child themes.
  * Version:         2.2.1
+ * Requires PHP:    8.1
  *
  * Author:          BizBudding
  * Author URI:      https://bizbudding.com
